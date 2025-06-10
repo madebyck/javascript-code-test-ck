@@ -1,12 +1,40 @@
-# Javascript Code Test
+# JavaScript Code Test
 
-`BookSearchApiClient` is a simple class that makes a call to a http API to retrieve a list of books and return them.
+### How to run:
 
-You need to refactor the `BookSearchApiClient` class, and demonstrate in `example-client.js` how it would be used. Refactor to what you consider to be production ready code. You can change it in anyway you would like and can use javascript or typescript.
+1. Make sure you have Node.js v22 installed.
+2. Run `npm install` to get dependencies.
+3. Run `npm run start` to fetch books and see the output.
+4. Run `npm test` to run the test suite.
 
-Things you will be asked about:
+---
 
-1. How could you easily add other book seller APIs in the the future
-2. How would you manage differences in response payloads between different APIs without needing to make future changes to whatever code you have in example-client.js
-3. How would you implement different query types for example: by publisher, by year published etc
-4. How your code would be tested
+## Assumptions/Comments
+
+- This project assumes the JSON response from the book API will be an array where each item contains nested `book` and `stock` objects, structured as follows:
+
+  ```json
+  {
+    "book": {
+      "title": "Macbeth",
+      "author": "William Shakespeare",
+      "isbn": "123456789"
+    },
+    "stock": {
+      "quantity": 5,
+      "price": "6.99"
+    }
+  }
+  ```
+
+- The client maps this response to a simpler object containing only these properties:
+
+  ```json
+  {
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "isbn": "123456789",
+    "quantity": 5,
+    "price": "6.99"
+  }
+  ```
